@@ -1,12 +1,12 @@
 package vn.csdl.infoapp;
 
+import org.springframework.boot.test.context.SpringBootTest;
+import vn.csdl.infoapp.config.TestSecurityConfiguration;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import org.springframework.boot.test.context.SpringBootTest;
-import vn.csdl.infoapp.InfoappApp;
-import vn.csdl.infoapp.config.TestSecurityConfiguration;
 
 /**
  * Base composite annotation for integration tests.
