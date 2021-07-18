@@ -46,6 +46,9 @@ public class Person {
     Short yearOfBirth;
 
     @NotNull
+    Short sync = 0;
+
+    @NotNull
     @ManyToOne
     Aria aria;
 

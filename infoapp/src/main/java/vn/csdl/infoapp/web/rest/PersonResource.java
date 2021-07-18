@@ -9,8 +9,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tech.jhipster.web.util.ResponseUtil;
+import vn.csdl.infoapp.client.TrackerFeignClient;
 import vn.csdl.infoapp.domain.Person;
 import vn.csdl.infoapp.repository.PersonRepository;
+import vn.csdl.infoapp.service.PersonService;
 import vn.csdl.infoapp.service.dto.PersonDTO;
 import vn.csdl.infoapp.service.mapper.PersonMapper;
 
@@ -21,10 +23,13 @@ import vn.csdl.infoapp.service.mapper.PersonMapper;
 public class PersonResource {
 
     PersonRepository repository;
+    PersonService service;
+
     PersonMapper mapper = PersonMapper.INSTANCE;
 
-    public PersonResource(PersonRepository repository) {
+    public PersonResource(PersonRepository repository, PersonService service) {
         this.repository = repository;
+        this.service = service;
     }
 
     @ApiOperation(value = "Lấy danh sách đối tượng (phân trang)")
@@ -49,8 +54,8 @@ public class PersonResource {
         @ApiParam(value = "PersonDTO chứa thông tin của đối tượng", required = true)
         @RequestBody PersonDTO dto
     ) {
-        Person entity = mapper.dtoToEntity(dto);
-        entity = repository.save(entity);
+        Person entity = service.save(dto);
+
         return ResponseEntity.ok(mapper.entityToDTO(entity));
     }
 
