@@ -17,11 +17,11 @@
 feign:
   hystrix:
     enabled: true
-  # client:
-  #   config:
-  #     default:
-  #       connectTimeout: 5000
-  #       readTimeout: 5000
+    client:
+      config:
+        default:
+          connectTimeout: 50000
+          readTimeout: 50000
 
 # See https://github.com/Netflix/Hystrix/wiki/Configuration
 hystrix:
@@ -31,8 +31,8 @@ hystrix:
         isolation:
           strategy: SEMAPHORE
           # See https://github.com/spring-cloud/spring-cloud-netflix/issues/1330
-          # thread:
-          #   timeoutInMilliseconds: 10000
+          thread:
+            timeoutInMilliseconds: 100000
   shareSecurityContext: true
 
 management:
@@ -94,6 +94,7 @@ spring:
         healthCheckPath: /management/health
         instanceId: trackerapp:${spring.application.instance-id:${random.value}}
         service-name: trackerapp
+        prefer-ip-address: true
       config:
         watch:
           enabled: false
@@ -198,5 +199,6 @@ jhipster:
 # More documentation is available at:
 # https://www.jhipster.tech/common-application-properties/
 # ===================================================================
-
+ribbon:
+  ReadTimeout: 20000
 # application:
