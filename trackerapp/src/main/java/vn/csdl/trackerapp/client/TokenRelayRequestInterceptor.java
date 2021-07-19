@@ -2,8 +2,9 @@ package vn.csdl.trackerapp.client;
 
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
-import java.util.Optional;
 import vn.csdl.trackerapp.security.oauth2.AuthorizationHeaderUtil;
+
+import java.util.Optional;
 
 public class TokenRelayRequestInterceptor implements RequestInterceptor {
 

@@ -1,8 +1,5 @@
 package vn.csdl.trackerapp.web.rest;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 import vn.csdl.trackerapp.domain.Meet;
@@ -10,7 +7,7 @@ import vn.csdl.trackerapp.domain.Person;
 import vn.csdl.trackerapp.repository.PersonRepository;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -47,8 +44,14 @@ public class PersonResource {
         repository.save(person);
     }
 
-    @PostMapping("/person/sync")
-    public void sync(){
+    @GetMapping("/person/{id}/track")
+    public List<Person> trackMeet(
+        @PathVariable(value = "id") Long id,
+        @RequestParam(value = "depth", required = false) Integer depth
+    ) {
+        if (depth == null)
+            depth = 3;
 
+        return repository.findPeopleByRootNodeAndDepth(id, depth);
     }
 }
