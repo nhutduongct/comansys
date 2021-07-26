@@ -3,6 +3,7 @@ package vn.csdl.infoapp.web.rest;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -20,7 +21,9 @@ import vn.csdl.infoapp.service.mapper.VaccineInjectionMapper;
 @RestController
 @RequestMapping("/api")
 public class VaccineInjectionResource {
-    VaccineInjectionService vaccineInjectionService;
+
+    @Autowired
+    private VaccineInjectionService vaccineInjectionService;
 
     VaccineInjectionMapper mapper = VaccineInjectionMapper.INSTANCE;
 

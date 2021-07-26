@@ -3,10 +3,14 @@ package vn.csdl.infoapp.config;
 import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.zalando.problem.ProblemModule;
 import org.zalando.problem.violations.ConstraintViolationProblemModule;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Configuration
 public class JacksonConfiguration {
@@ -17,7 +21,10 @@ public class JacksonConfiguration {
      */
     @Bean
     public JavaTimeModule javaTimeModule() {
-        return new JavaTimeModule();
+        JavaTimeModule javaTimeModule = new JavaTimeModule();
+        LocalDateTimeDeserializer localDateTimeDeserializer =  new LocalDateTimeDeserializer(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+        javaTimeModule.addDeserializer(LocalDateTime.class, localDateTimeDeserializer);
+        return javaTimeModule;
     }
 
     @Bean
