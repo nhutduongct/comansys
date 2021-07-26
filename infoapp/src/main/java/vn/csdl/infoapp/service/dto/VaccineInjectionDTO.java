@@ -1,11 +1,16 @@
-package vn.csdl.infoapp.domain;
+package vn.csdl.infoapp.service.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
+import vn.csdl.infoapp.domain.Person;
+import vn.csdl.infoapp.domain.Vaccine;
 
-import javax.persistence.*;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
@@ -13,25 +18,14 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
-@Entity
-@Table(name = "vaccine_injection")
-public class VaccineInjection {
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+public class VaccineInjectionDTO {
+
     Long id;
 
-    @NotNull
-    @ManyToOne
-    @JoinColumn(name = "person_id")
     Person person;
 
-    @NotNull
-    @ManyToOne
-    @JoinColumn(name = "vaccine_id")
     Vaccine vaccine;
 
-    @NotNull
-    @Min(value = 1)
     Short injectNo;
 
     LocalDateTime examineBeforeInjectTime;
@@ -44,10 +38,7 @@ public class VaccineInjection {
 
     String injectionDoctor;
 
-    @Min(value = 0)
     Short injectResult; //0: Bình thường, 1: phản ứng nhẹ, 2: sốc phản vệ, 4: tử vong
 
-    @Length(max = 5000)
     String note;
-
 }

@@ -1,35 +1,27 @@
-package vn.csdl.infoapp.domain;
+package vn.csdl.infoapp.service.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@Entity
-@Table(name = "vaccine")
-public class Vaccine {
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+public class VaccineDTO {
+
     Long id;
 
-    @NotNull
     String name;
-
-    @NotNull
+    //    nha san xuat
     String manufactures;
-
-    @NotNull
+    // so lieu
     Short numberOfInjections;
-
-    @NotNull
+    // hieu luc
     Short efficiency;
 
     String note;
-
 
 }
