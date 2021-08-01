@@ -3,7 +3,7 @@ package vn.csdl.infoapp.service.dto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import vn.csdl.infoapp.domain.Aria;
+import vn.csdl.infoapp.domain.Ward;
 
 @Getter
 @Setter
@@ -13,5 +13,5 @@ public class QuarantinePlaceDTO {
     String name;
     String phone;
     String address;
-    Aria aria;
+    Ward ward;
 }

@@ -13,15 +13,15 @@ import javax.validation.constraints.NotNull;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "aria")
+@Table(name = "ward")
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
-public class Aria {
+public class Ward {
 
     @Id
-    Integer ariaCode;
+    Integer wardCode;
 
     @NotNull
-    String ariaName;
+    String wardName;
 
     @NotNull
     @JsonIgnoreProperties(value = "arias")

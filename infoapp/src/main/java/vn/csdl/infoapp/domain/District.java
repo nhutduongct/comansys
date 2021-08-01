@@ -32,5 +32,5 @@ public class District {
 
     @JsonIgnoreProperties(value = "district")
     @OneToMany(mappedBy = "district")
-    List<Aria> arias;
+    List<Ward> wards;
 }

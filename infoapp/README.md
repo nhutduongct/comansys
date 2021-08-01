@@ -50,7 +50,7 @@ MySQL: import dữ liệu tỉnh thành, quận huyện, phường xã
 ```
 city: infoapp/src/main/docker/mysql/city.csv
 district: infoapp/src/main/docker/mysql/district.csv
-aria: infoapp/src/main/docker/mysql/aria.csv
+ward: infoapp/src/main/docker/mysql/ward.csv
 ```
 
 For further instructions on how to develop with JHipster, have a look at [Using JHipster in development][].

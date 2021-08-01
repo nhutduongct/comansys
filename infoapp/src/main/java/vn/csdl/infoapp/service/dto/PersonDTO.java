@@ -23,5 +23,5 @@ public class PersonDTO {
 
     Short yearOfBirth;
 
-    AriaDTO aria;
+    WardDTO ward;
 }

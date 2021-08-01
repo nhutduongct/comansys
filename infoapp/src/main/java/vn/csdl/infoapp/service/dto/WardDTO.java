@@ -7,10 +7,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class AriaDTO {
-    Integer ariaCode;
+public class WardDTO {
+    Integer wardCode;
 
-    String ariaName;
+    String wardName;
 
     DistrictDTO district;
 }

@@ -50,7 +50,7 @@ public class Person {
 
     @NotNull
     @ManyToOne
-    Aria aria;
+    Ward ward;
 
     @JsonIgnoreProperties(value = "person")
     @OneToMany(mappedBy = "person")

@@ -28,5 +28,5 @@ public class QuarantinePlace {
 
     @NotNull
     @ManyToOne
-    Aria aria;
+    Ward ward;
 }

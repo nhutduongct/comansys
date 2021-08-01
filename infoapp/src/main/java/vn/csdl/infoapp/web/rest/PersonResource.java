@@ -36,7 +36,6 @@ public class PersonResource {
     @GetMapping("/person")
     public ResponseEntity<Page<PersonDTO>> getAllPerson(Pageable pageable) throws InterruptedException {
         Page<Person> page = repository.findAllBy(pageable);
-        Thread.sleep(10000);
         return new ResponseEntity<>(page.map(mapper::entityToDTO), HttpStatus.OK);
     }
 

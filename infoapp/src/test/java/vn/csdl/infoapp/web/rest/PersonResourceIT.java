@@ -11,9 +11,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import vn.csdl.infoapp.InfoappApp;
 import vn.csdl.infoapp.config.TestSecurityConfiguration;
-import vn.csdl.infoapp.domain.Aria;
+import vn.csdl.infoapp.domain.Ward;
 import vn.csdl.infoapp.domain.Person;
-import vn.csdl.infoapp.repository.AriaRepository;
+import vn.csdl.infoapp.repository.WardRepository;
 import vn.csdl.infoapp.repository.PersonRepository;
 import vn.csdl.infoapp.security.AuthoritiesConstants;
 
@@ -34,7 +34,7 @@ public class PersonResourceIT {
     private MockMvc restDonViMockMvc;
 
     @Autowired
-    private AriaRepository ariaRepository;
+    private WardRepository ariaRepository;
 
     @Autowired
     private PersonRepository repository;
@@ -54,7 +54,7 @@ public class PersonResourceIT {
         person.setIdType(Person.ID_CMND);
         person.setPhone("+84939993304");
         person.setYearOfBirth((short)1992);
-        person.setAria(ariaRepository.getOne(31183));
+        person.setWard(ariaRepository.getOne(31183));
         return person;
     }
 
@@ -76,8 +76,8 @@ public class PersonResourceIT {
     @Transactional
     public void createValidPerson() throws Exception {
 
-        Aria aria = new Aria(); aria.setAriaCode(31183);
-        testEntity.setAria(aria);
+        Ward ward = new Ward(); ward.setWardCode(31183);
+        testEntity.setWard(ward);
 
         restDonViMockMvc.perform(post("/api/person")
             .contentType(MediaType.APPLICATION_JSON)
@@ -88,7 +88,7 @@ public class PersonResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.name").value(testEntity.getName()))
             .andExpect(jsonPath("$.address").value(testEntity.getAddress()))
-            .andExpect(jsonPath("$.aria.ariaCode").value(testEntity.getAria().getAriaCode()));
+            .andExpect(jsonPath("$.ward.wardCode").value(testEntity.getWard().getWardCode()));
     }
 
     @Test
@@ -96,8 +96,8 @@ public class PersonResourceIT {
     public void createInvalidPerson() throws Exception {
 
         //invalid aria
-        Aria aria = new Aria(); aria.setAriaCode(-1000);
-        testEntity.setAria(aria);
+        Ward ward = new Ward(); ward.setWardCode(-1000);
+        testEntity.setWard(ward);
 
         restDonViMockMvc.perform(post("/api/person")
             .contentType(MediaType.APPLICATION_JSON)
@@ -127,9 +127,9 @@ public class PersonResourceIT {
         final String NEW_VALUE = "Le Hoai Bao";
 
         testEntity.setName(NEW_VALUE);
-        Aria aria = new Aria();
-        aria.setAriaCode(28291); //Tân mỹ chánh
-        testEntity.setAria(aria);
+        Ward ward = new Ward();
+        ward.setWardCode(28291); //Tân mỹ chánh
+        testEntity.setWard(ward);
         testEntity.setAddress("Mekong ITP");
 
         restDonViMockMvc.perform(put("/api/person/{id}", testEntity.getId())
@@ -141,7 +141,7 @@ public class PersonResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.name").value(testEntity.getName()))
             .andExpect(jsonPath("$.address").value(testEntity.getAddress()))
-            .andExpect(jsonPath("$.aria.ariaCode").value(testEntity.getAria().getAriaCode()));
+            .andExpect(jsonPath("$.ward.wardCode").value(testEntity.getWard().getWardCode()));
 
 
     }
