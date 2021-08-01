@@ -34,8 +34,9 @@ public class PersonResource {
 
     @ApiOperation(value = "Lấy danh sách đối tượng (phân trang)")
     @GetMapping("/person")
-    public ResponseEntity<Page<PersonDTO>> getAllPerson(Pageable pageable) {
+    public ResponseEntity<Page<PersonDTO>> getAllPerson(Pageable pageable) throws InterruptedException {
         Page<Person> page = repository.findAllBy(pageable);
+        Thread.sleep(10000);
         return new ResponseEntity<>(page.map(mapper::entityToDTO), HttpStatus.OK);
     }
 

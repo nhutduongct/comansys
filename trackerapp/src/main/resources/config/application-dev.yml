@@ -40,7 +40,7 @@ spring:
   neo4j:
     pool:
       metrics-enabled: true
-    uri: bolt://localhost:7687
+    uri: bolt://10.82.14.68:7687
     # Uncomment to use an authenticated connection
     authentication:
       username: neo4j
@@ -59,6 +59,7 @@ spring:
           - git-version=${git.commit.id.describe:}
           - git-commit=${git.commit.id.abbrev:}
           - git-branch=${git.branch:}
+        ip-address: 10.82.33.223
       host: localhost
       port: 8500
   messages:
