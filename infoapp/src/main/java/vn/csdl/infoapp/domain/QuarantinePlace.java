@@ -28,5 +28,6 @@ public class QuarantinePlace {
 
     @NotNull
     @ManyToOne
+    @JoinColumn(name = "ward_code")
     Ward ward;
 }

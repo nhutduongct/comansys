@@ -50,6 +50,7 @@ public class Person {
 
     @NotNull
     @ManyToOne
+    @JoinColumn(name = "ward_code")
     Ward ward;
 
     @JsonIgnoreProperties(value = "person")
