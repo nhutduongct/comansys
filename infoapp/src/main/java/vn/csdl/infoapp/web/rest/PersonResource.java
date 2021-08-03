@@ -7,14 +7,20 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.ApiIgnore;
 import tech.jhipster.web.util.ResponseUtil;
 import vn.csdl.infoapp.client.TrackerFeignClient;
 import vn.csdl.infoapp.domain.Person;
 import vn.csdl.infoapp.repository.PersonRepository;
+import vn.csdl.infoapp.security.AuthoritiesConstants;
 import vn.csdl.infoapp.service.PersonService;
 import vn.csdl.infoapp.service.dto.PersonDTO;
 import vn.csdl.infoapp.service.mapper.PersonMapper;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Api(value = "Quản lý đối tượng nhiễm/nghi nhiễm")
@@ -34,9 +40,19 @@ public class PersonResource {
 
     @ApiOperation(value = "Lấy danh sách đối tượng (phân trang)")
     @GetMapping("/person")
-    public ResponseEntity<Page<PersonDTO>> getAllPerson(Pageable pageable) throws InterruptedException {
+    public ResponseEntity<Page<PersonDTO>> getAllPerson(Pageable pageable) {
         Page<Person> page = repository.findAllBy(pageable);
         return new ResponseEntity<>(page.map(mapper::entityToDTO), HttpStatus.OK);
+    }
+
+    @ApiIgnore
+    @ApiOperation(value = "Lấy danh sách đối tượng")
+    @GetMapping("/person-by-id-list")
+    public List<PersonDTO> getAllPersonByIdList(
+        @RequestParam(value = "ids") List<Long> ids
+    ) {
+        List<Person> list = repository.findAllById(ids);
+        return list.stream().map(mapper::entityToDTO).collect(Collectors.toList());
     }
 
     @ApiOperation(value = "Lấy thông tin của một đối tượng")
