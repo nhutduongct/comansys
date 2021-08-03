@@ -1,0 +1,280 @@
+= trackerapp API
+
+
+[[_overview]]
+== Overview
+trackerapp API documentation
+
+
+=== Version information
+[%hardbreaks]
+__Version__ : 0.0.1
+
+
+=== License information
+[%hardbreaks]
+__License__ : unlicensed
+__Terms of service__ : null
+
+
+=== URI scheme
+[%hardbreaks]
+__Host__ : localhost:8082
+__BasePath__ : /
+
+
+=== Tags
+
+* person-resource : Person Resource
+
+
+
+
+[[_paths]]
+== Paths
+
+[[_createorupdatepersonusingpost_1]]
+=== createOrUpdatePerson
+....
+POST /api/person
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**person** +
+__required__|person|<<_person,Person>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|No Content
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* person-resource
+
+
+[[_createorupdatepersonusingpost]]
+=== createOrUpdatePerson
+....
+POST /api/person/{id}/meet
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**id** +
+__required__|id|integer (int64)
+|**Query**|**endTime** +
+__required__|endTime|string (date-time)
+|**Query**|**meetPersonId** +
+__required__|meetPersonId|integer (int64)
+|**Query**|**startTime** +
+__required__|startTime|string (date-time)
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|No Content
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* person-resource
+
+
+[[_trackmeetusingget]]
+=== trackMeet
+....
+GET /api/person/{id}/track
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**id** +
+__required__|id|integer (int64)
+|**Query**|**fromTime** +
+__required__|fromTime|string (date-time)
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|< string, < <<_persondto,PersonDTO>> > array > map
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* person-resource
+
+
+
+
+[[_definitions]]
+== Definitions
+
+[[_citydto]]
+=== CityDTO
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**cityCode** +
+__optional__|integer (int32)
+|**cityName** +
+__optional__|string
+|===
+
+
+[[_districtdto]]
+=== DistrictDTO
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**city** +
+__optional__|<<_citydto,CityDTO>>
+|**districtCode** +
+__optional__|integer (int32)
+|**districtName** +
+__optional__|string
+|===
+
+
+[[_meet]]
+=== Meet
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**endTime** +
+__optional__|string (date-time)
+|**id** +
+__optional__|integer (int64)
+|**person** +
+__optional__|<<_person,Person>>
+|**startTime** +
+__optional__|string (date-time)
+|===
+
+
+[[_person]]
+=== Person
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**id** +
+__optional__|integer (int64)
+|**meets** +
+__optional__|< <<_meet,Meet>> > array
+|**name** +
+__optional__|string
+|===
+
+
+[[_persondto]]
+=== PersonDTO
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**address** +
+__optional__|string
+|**id** +
+__optional__|integer (int64)
+|**idType** +
+__optional__|integer (int32)
+|**name** +
+__optional__|string
+|**personId** +
+__optional__|string
+|**phone** +
+__optional__|string
+|**ward** +
+__optional__|<<_warddto,WardDTO>>
+|**yearOfBirth** +
+__optional__|integer (int32)
+|===
+
+
+[[_warddto]]
+=== WardDTO
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**district** +
+__optional__|<<_districtdto,DistrictDTO>>
+|**wardCode** +
+__optional__|integer (int32)
+|**wardName** +
+__optional__|string
+|===
+
+
+
+
+

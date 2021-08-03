@@ -1,0 +1,1821 @@
+= infoapp API
+
+
+[[_overview]]
+== Overview
+infoapp API documentation
+
+
+=== Version information
+[%hardbreaks]
+__Version__ : 0.0.1
+
+
+=== License information
+[%hardbreaks]
+__License__ : unlicensed
+__Terms of service__ : null
+
+
+=== URI scheme
+[%hardbreaks]
+__Host__ : localhost:8081
+__BasePath__ : /
+
+
+=== Tags
+
+* infection-resource : Infection Resource
+* person-resource : Person Resource
+* quarantine-place-resource : Quarantine Place Resource
+* quarantine-resource : Quarantine Resource
+* vaccine-injection-resource : Vaccine Injection Resource
+* vaccine-resource : Vaccine Resource
+
+
+
+
+[[_paths]]
+== Paths
+
+[[_createinfectionusingpost]]
+=== Thêm một lần nhiễm mới
+....
+POST /api/infection
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**dto** +
+__required__|InfectionDTO chứa thông tin của lần nhiễm|<<_infectiondto,InfectionDTO>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_infectiondto,InfectionDTO>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* infection-resource
+
+
+[[_getallinfectionusingget]]
+=== Lấy danh sách lần nhiễm (phân trang)
+....
+GET /api/infection
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**page** +
+__optional__|Page number of the requested page|integer (int32)
+|**Query**|**size** +
+__optional__|Size of a page|integer (int32)
+|**Query**|**sort** +
+__optional__|Sorting criteria in the format: property(,asc\|desc). Default sort order is ascending. Multiple sort criteria are supported.|< string > array(multi)
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_pageofinfectiondto,PageOfInfectionDTO>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* infection-resource
+
+
+[[_getinfectionusingget]]
+=== Lấy thông tin của một lần nhiễm
+....
+GET /api/infection/{id}
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**id** +
+__required__|Mã|integer (int64)
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_infectiondto,InfectionDTO>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* infection-resource
+
+
+[[_updateinfectionusingput]]
+=== Cập nhật thông tin cho một lần nhiễm
+....
+PUT /api/infection/{id}
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**id** +
+__required__|Mã lần nhiễm|integer (int64)
+|**Body**|**dto** +
+__required__|InfectionDTO chứa thông tin của lần nhiễm|<<_infectiondto,InfectionDTO>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_infectiondto,InfectionDTO>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* infection-resource
+
+
+[[_deleteinfectionusingdelete]]
+=== Xóa lần nhiễm
+....
+DELETE /api/infection/{id}
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**id** +
+__required__|Mã lần nhiễm|integer (int64)
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|No Content
+|**204**|No Content|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|===
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* infection-resource
+
+
+[[_createpersonusingpost]]
+=== Thêm một đối tượng mới
+....
+POST /api/person
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**dto** +
+__required__|PersonDTO chứa thông tin của đối tượng|<<_persondto,PersonDTO>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_persondto,PersonDTO>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* person-resource
+
+
+[[_getallpersonusingget]]
+=== Lấy danh sách đối tượng (phân trang)
+....
+GET /api/person
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**page** +
+__optional__|Page number of the requested page|integer (int32)
+|**Query**|**size** +
+__optional__|Size of a page|integer (int32)
+|**Query**|**sort** +
+__optional__|Sorting criteria in the format: property(,asc\|desc). Default sort order is ascending. Multiple sort criteria are supported.|< string > array(multi)
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_pageofpersondto,PageOfPersonDTO>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* person-resource
+
+
+[[_getpersonusingget]]
+=== Lấy thông tin của một đối tượng
+....
+GET /api/person/{id}
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**id** +
+__required__|Mã|integer (int64)
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_persondto,PersonDTO>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* person-resource
+
+
+[[_updatepersonusingput]]
+=== Cập nhật thông tin cho một đối tượng
+....
+PUT /api/person/{id}
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**id** +
+__required__|Mã đối tượng|integer (int64)
+|**Body**|**dto** +
+__required__|PersonDTO chứa thông tin của đối tượng|<<_persondto,PersonDTO>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_persondto,PersonDTO>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* person-resource
+
+
+[[_deletepersonusingdelete]]
+=== Xóa đối tượng
+....
+DELETE /api/person/{id}
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**id** +
+__required__|Mã đối tượng|integer (int64)
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|No Content
+|**204**|No Content|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|===
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* person-resource
+
+
+[[_createquarantineusingpost]]
+=== Thêm một đối tượng mới
+....
+POST /api/quarantine
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**dto** +
+__required__|QuarantineDTO chứa thông tin của đối tượng|<<_quarantinedto,QuarantineDTO>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_quarantinedto,QuarantineDTO>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* quarantine-resource
+
+
+[[_getallquarantineusingget]]
+=== Lấy danh sách bệnh nhân cách ly (theo địa điểm, ngày bắt đầu, ngày kết thúc
+....
+GET /api/quarantine
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**page** +
+__optional__|Page number of the requested page|integer (int32)
+|**Query**|**size** +
+__optional__|Size of a page|integer (int32)
+|**Query**|**sort** +
+__optional__|Sorting criteria in the format: property(,asc\|desc). Default sort order is ascending. Multiple sort criteria are supported.|< string > array(multi)
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_pageofquarantinedto,PageOfQuarantineDTO>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* quarantine-resource
+
+
+[[_getquarantineusingget]]
+=== Lấy thông tin của một đối tượng
+....
+GET /api/quarantine/{id}
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**id** +
+__required__|Mã|integer (int64)
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_quarantinedto,QuarantineDTO>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* quarantine-resource
+
+
+[[_updatequarantineusingput]]
+=== Cập nhật thông tin cho một đối tượng
+....
+PUT /api/quarantine/{id}
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**id** +
+__required__|Mã đối tượng|integer (int64)
+|**Body**|**dto** +
+__required__|QuarantineDTO chứa thông tin của đối tượng|<<_quarantinedto,QuarantineDTO>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_quarantinedto,QuarantineDTO>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* quarantine-resource
+
+
+[[_deletequarantineusingdelete]]
+=== Xóa đối tượng
+....
+DELETE /api/quarantine/{id}
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**id** +
+__required__|Mã đối tượng|integer (int64)
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|No Content
+|**204**|No Content|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|===
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* quarantine-resource
+
+
+[[_createquarantineplaceusingpost]]
+=== Thêm một đối tượng mới
+....
+POST /api/quarantineplace
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**dto** +
+__required__|QuarantinePlaceDTO chứa thông tin của đối tượng|<<_quarantineplacedto,QuarantinePlaceDTO>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_quarantineplacedto,QuarantinePlaceDTO>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* quarantine-place-resource
+
+
+[[_getallquarantineplaceusingget]]
+=== Lấy danh sách nơi cách ly
+....
+GET /api/quarantineplace
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**page** +
+__optional__|Page number of the requested page|integer (int32)
+|**Query**|**size** +
+__optional__|Size of a page|integer (int32)
+|**Query**|**sort** +
+__optional__|Sorting criteria in the format: property(,asc\|desc). Default sort order is ascending. Multiple sort criteria are supported.|< string > array(multi)
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_pageofquarantineplacedto,PageOfQuarantinePlaceDTO>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* quarantine-place-resource
+
+
+[[_getquarantineplaceusingget]]
+=== Lấy thông tin của một đối tượng
+....
+GET /api/quarantineplace/{id}
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**id** +
+__required__|Mã|integer (int64)
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_quarantineplacedto,QuarantinePlaceDTO>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* quarantine-place-resource
+
+
+[[_updatequarantineplaceusingput]]
+=== Cập nhật thông tin cho một đối tượng
+....
+PUT /api/quarantineplace/{id}
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**id** +
+__required__|Mã đối tượng|integer (int64)
+|**Body**|**dto** +
+__required__|QuarantinePlaceDTO chứa thông tin của đối tượng|<<_quarantineplacedto,QuarantinePlaceDTO>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_quarantineplacedto,QuarantinePlaceDTO>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* quarantine-place-resource
+
+
+[[_deletequarantineplaceusingdelete]]
+=== Xóa đối tượng
+....
+DELETE /api/quarantineplace/{id}
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**id** +
+__required__|Mã đối tượng|integer (int64)
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|No Content
+|**204**|No Content|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|===
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* quarantine-place-resource
+
+
+[[_createvaccineusingpost]]
+=== createVaccine
+....
+POST /api/vaccine
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**dto** +
+__required__|VaccineDTO chứa thông tin của đối tượng|<<_vaccinedto,VaccineDTO>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_vaccinedto,VaccineDTO>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* vaccine-resource
+
+
+[[_getallvaccineusingget]]
+=== getAllVaccine
+....
+GET /api/vaccine
+....
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|< <<_vaccinedto,VaccineDTO>> > array
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* vaccine-resource
+
+
+[[_createvaccineinjectionusingpost]]
+=== createVaccineInjection
+....
+POST /api/vaccine-injection
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Body**|**dto** +
+__required__|VaccineInjectionDTO chứa thông tin của đối tượng|<<_vaccineinjectiondto,VaccineInjectionDTO>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_vaccineinjectiondto,VaccineInjectionDTO>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* vaccine-injection-resource
+
+
+[[_getallvaccineinjectionusingget]]
+=== getAllVaccineInjection
+....
+GET /api/vaccine-injection
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Query**|**page** +
+__optional__|Page number of the requested page|integer (int32)
+|**Query**|**size** +
+__optional__|Size of a page|integer (int32)
+|**Query**|**sort** +
+__optional__|Sorting criteria in the format: property(,asc\|desc). Default sort order is ascending. Multiple sort criteria are supported.|< string > array(multi)
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_pageofvaccineinjectiondto,PageOfVaccineInjectionDTO>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* vaccine-injection-resource
+
+
+[[_getvaccineinjectionusingget]]
+=== getVaccineInjection
+....
+GET /api/vaccine-injection/{id}
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**id** +
+__required__|Mã|integer (int64)
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_vaccineinjectiondto,VaccineInjectionDTO>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* vaccine-injection-resource
+
+
+[[_updatevaccineinjectionusingput]]
+=== updateVaccineInjection
+....
+PUT /api/vaccine-injection/{id}
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**id** +
+__required__|Mã đối tượng|integer (int64)
+|**Body**|**dto** +
+__required__|VaccineInjectionDTO chứa thông tin của đối tượng|<<_vaccineinjectiondto,VaccineInjectionDTO>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_vaccineinjectiondto,VaccineInjectionDTO>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* vaccine-injection-resource
+
+
+[[_deletevaccineinjectionusingdelete]]
+=== Xóa đối tượng
+....
+DELETE /api/vaccine-injection/{id}
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**id** +
+__required__|Mã đối tượng|integer (int64)
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|No Content
+|**204**|No Content|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|===
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* vaccine-injection-resource
+
+
+[[_getvaccineusingget]]
+=== getVaccine
+....
+GET /api/vaccine/{id}
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**id** +
+__required__|Mã|integer (int64)
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_vaccinedto,VaccineDTO>>
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* vaccine-resource
+
+
+[[_updatevaccineusingput]]
+=== updateVaccine
+....
+PUT /api/vaccine/{id}
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**id** +
+__required__|Mã vaccine|integer (int64)
+|**Body**|**dto** +
+__required__|VaccineDTO chứa thông tin của vaccine|<<_vaccinedto,VaccineDTO>>
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|<<_vaccinedto,VaccineDTO>>
+|**201**|Created|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|**404**|Not Found|No Content
+|===
+
+
+==== Consumes
+
+* `application/json`
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* vaccine-resource
+
+
+[[_deletevaccineusingdelete]]
+=== deleteVaccine
+....
+DELETE /api/vaccine/{id}
+....
+
+
+==== Parameters
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|Type|Name|Description|Schema
+|**Path**|**id** +
+__required__|Mã vaccine|integer (int64)
+|===
+
+
+==== Responses
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP Code|Description|Schema
+|**200**|OK|No Content
+|**204**|No Content|No Content
+|**401**|Unauthorized|No Content
+|**403**|Forbidden|No Content
+|===
+
+
+==== Produces
+
+* `*/*`
+
+
+==== Tags
+
+* vaccine-resource
+
+
+
+
+[[_definitions]]
+== Definitions
+
+[[_city]]
+=== City
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**cityCode** +
+__optional__|integer (int32)
+|**cityName** +
+__required__|string
+|**districts** +
+__optional__|< <<_district,District>> > array
+|===
+
+
+[[_citydto]]
+=== CityDTO
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**cityCode** +
+__optional__|integer (int32)
+|**cityName** +
+__optional__|string
+|===
+
+
+[[_district]]
+=== District
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**city** +
+__required__|<<_city,City>>
+|**districtCode** +
+__optional__|integer (int32)
+|**districtName** +
+__required__|string
+|**wards** +
+__optional__|< <<_ward,Ward>> > array
+|===
+
+
+[[_districtdto]]
+=== DistrictDTO
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**city** +
+__optional__|<<_citydto,CityDTO>>
+|**districtCode** +
+__optional__|integer (int32)
+|**districtName** +
+__optional__|string
+|===
+
+
+[[_infection]]
+=== Infection
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**endTime** +
+__optional__|string (date-time)
+|**flevel** +
+__optional__|integer (int32)
+|**id** +
+__optional__|integer (int64)
+|**infectedFromPerson** +
+__optional__|<<_person,Person>>
+|**person** +
+__optional__|<<_person,Person>>
+|**startTime** +
+__required__|string (date-time)
+|**treatmentResult** +
+__optional__|string
+|===
+
+
+[[_infectiondto]]
+=== InfectionDTO
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**endTime** +
+__optional__|string (date-time)
+|**flevel** +
+__optional__|integer (int32)
+|**id** +
+__optional__|integer (int64)
+|**infectedFromPerson** +
+__optional__|<<_persondto,PersonDTO>>
+|**person** +
+__optional__|<<_persondto,PersonDTO>>
+|**startTime** +
+__optional__|string (date-time)
+|**treatmentResult** +
+__optional__|string
+|===
+
+
+[[_pageofinfectiondto]]
+=== PageOfInfectionDTO
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**content** +
+__optional__|< <<_infectiondto,InfectionDTO>> > array
+|**empty** +
+__optional__|boolean
+|**first** +
+__optional__|boolean
+|**last** +
+__optional__|boolean
+|**number** +
+__optional__|integer (int32)
+|**numberOfElements** +
+__optional__|integer (int32)
+|**size** +
+__optional__|integer (int32)
+|**sort** +
+__optional__|<<_sort,Sort>>
+|**totalElements** +
+__optional__|integer (int64)
+|**totalPages** +
+__optional__|integer (int32)
+|===
+
+
+[[_pageofpersondto]]
+=== PageOfPersonDTO
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**content** +
+__optional__|< <<_persondto,PersonDTO>> > array
+|**empty** +
+__optional__|boolean
+|**first** +
+__optional__|boolean
+|**last** +
+__optional__|boolean
+|**number** +
+__optional__|integer (int32)
+|**numberOfElements** +
+__optional__|integer (int32)
+|**size** +
+__optional__|integer (int32)
+|**sort** +
+__optional__|<<_sort,Sort>>
+|**totalElements** +
+__optional__|integer (int64)
+|**totalPages** +
+__optional__|integer (int32)
+|===
+
+
+[[_pageofquarantinedto]]
+=== PageOfQuarantineDTO
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**content** +
+__optional__|< <<_quarantinedto,QuarantineDTO>> > array
+|**empty** +
+__optional__|boolean
+|**first** +
+__optional__|boolean
+|**last** +
+__optional__|boolean
+|**number** +
+__optional__|integer (int32)
+|**numberOfElements** +
+__optional__|integer (int32)
+|**size** +
+__optional__|integer (int32)
+|**sort** +
+__optional__|<<_sort,Sort>>
+|**totalElements** +
+__optional__|integer (int64)
+|**totalPages** +
+__optional__|integer (int32)
+|===
+
+
+[[_pageofquarantineplacedto]]
+=== PageOfQuarantinePlaceDTO
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**content** +
+__optional__|< <<_quarantineplacedto,QuarantinePlaceDTO>> > array
+|**empty** +
+__optional__|boolean
+|**first** +
+__optional__|boolean
+|**last** +
+__optional__|boolean
+|**number** +
+__optional__|integer (int32)
+|**numberOfElements** +
+__optional__|integer (int32)
+|**size** +
+__optional__|integer (int32)
+|**sort** +
+__optional__|<<_sort,Sort>>
+|**totalElements** +
+__optional__|integer (int64)
+|**totalPages** +
+__optional__|integer (int32)
+|===
+
+
+[[_pageofvaccineinjectiondto]]
+=== PageOfVaccineInjectionDTO
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**content** +
+__optional__|< <<_vaccineinjectiondto,VaccineInjectionDTO>> > array
+|**empty** +
+__optional__|boolean
+|**first** +
+__optional__|boolean
+|**last** +
+__optional__|boolean
+|**number** +
+__optional__|integer (int32)
+|**numberOfElements** +
+__optional__|integer (int32)
+|**size** +
+__optional__|integer (int32)
+|**sort** +
+__optional__|<<_sort,Sort>>
+|**totalElements** +
+__optional__|integer (int64)
+|**totalPages** +
+__optional__|integer (int32)
+|===
+
+
+[[_person]]
+=== Person
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**address** +
+__required__|string
+|**id** +
+__optional__|integer (int64)
+|**idType** +
+__required__|integer (int32)
+|**infections** +
+__optional__|< <<_infection,Infection>> > array
+|**name** +
+__required__|string
+|**personId** +
+__required__|string
+|**phone** +
+__required__|string
+|**quarantines** +
+__optional__|< <<_quarantine,Quarantine>> > array
+|**sync** +
+__required__|integer (int32)
+|**ward** +
+__required__|<<_ward,Ward>>
+|**yearOfBirth** +
+__required__|integer (int32)
+|===
+
+
+[[_persondto]]
+=== PersonDTO
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**address** +
+__optional__|string
+|**id** +
+__optional__|integer (int64)
+|**idType** +
+__optional__|integer (int32)
+|**name** +
+__optional__|string
+|**personId** +
+__optional__|string
+|**phone** +
+__optional__|string
+|**ward** +
+__optional__|<<_warddto,WardDTO>>
+|**yearOfBirth** +
+__optional__|integer (int32)
+|===
+
+
+[[_quarantine]]
+=== Quarantine
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|Name|Description|Schema
+|**endDate** +
+__optional__||string (date-time)
+|**id** +
+__optional__||integer (int64)
+|**note** +
+__optional__||string
+|**person** +
+__required__||<<_person,Person>>
+|**quarantinePlace** +
+__required__||<<_quarantineplace,QuarantinePlace>>
+|**quarantineResult** +
+__optional__|**Minimum value** : `0`|integer (int32)
+|**startDate** +
+__required__||string (date-time)
+|===
+
+
+[[_quarantinedto]]
+=== QuarantineDTO
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**endDate** +
+__optional__|string (date-time)
+|**id** +
+__optional__|integer (int64)
+|**note** +
+__optional__|string
+|**person** +
+__optional__|<<_person,Person>>
+|**quarantinePlace** +
+__optional__|<<_quarantineplace,QuarantinePlace>>
+|**quarantineResult** +
+__optional__|integer (int32)
+|**startDate** +
+__optional__|string (date-time)
+|===
+
+
+[[_quarantineplace]]
+=== QuarantinePlace
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**address** +
+__required__|string
+|**id** +
+__optional__|integer (int64)
+|**name** +
+__required__|string
+|**phone** +
+__required__|string
+|**ward** +
+__required__|<<_ward,Ward>>
+|===
+
+
+[[_quarantineplacedto]]
+=== QuarantinePlaceDTO
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**address** +
+__optional__|string
+|**id** +
+__optional__|integer (int64)
+|**name** +
+__optional__|string
+|**phone** +
+__optional__|string
+|**ward** +
+__optional__|<<_ward,Ward>>
+|===
+
+
+[[_sort]]
+=== Sort
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**empty** +
+__optional__|boolean
+|**sorted** +
+__optional__|boolean
+|**unsorted** +
+__optional__|boolean
+|===
+
+
+[[_vaccine]]
+=== Vaccine
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**efficiency** +
+__required__|integer (int32)
+|**id** +
+__optional__|integer (int64)
+|**manufactures** +
+__required__|string
+|**name** +
+__required__|string
+|**note** +
+__optional__|string
+|**numberOfInjections** +
+__required__|integer (int32)
+|===
+
+
+[[_vaccinedto]]
+=== VaccineDTO
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**efficiency** +
+__optional__|integer (int32)
+|**id** +
+__optional__|integer (int64)
+|**manufactures** +
+__optional__|string
+|**name** +
+__optional__|string
+|**note** +
+__optional__|string
+|**numberOfInjections** +
+__optional__|integer (int32)
+|===
+
+
+[[_vaccineinjectiondto]]
+=== VaccineInjectionDTO
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**examineBeforeInjectDoctor** +
+__optional__|string
+|**examineBeforeInjectResult** +
+__optional__|string
+|**examineBeforeInjectTime** +
+__optional__|string (date-time)
+|**id** +
+__optional__|integer (int64)
+|**injectNo** +
+__optional__|integer (int32)
+|**injectResult** +
+__optional__|integer (int32)
+|**injectionDoctor** +
+__optional__|string
+|**injectionTime** +
+__optional__|string (date-time)
+|**note** +
+__optional__|string
+|**person** +
+__optional__|<<_person,Person>>
+|**vaccine** +
+__optional__|<<_vaccine,Vaccine>>
+|===
+
+
+[[_ward]]
+=== Ward
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**district** +
+__required__|<<_district,District>>
+|**wardCode** +
+__optional__|integer (int32)
+|**wardName** +
+__required__|string
+|===
+
+
+[[_warddto]]
+=== WardDTO
+
+[options="header", cols=".^3,.^4"]
+|===
+|Name|Schema
+|**district** +
+__optional__|<<_districtdto,DistrictDTO>>
+|**wardCode** +
+__optional__|integer (int32)
+|**wardName** +
+__optional__|string
+|===
+
+
+
+
+
