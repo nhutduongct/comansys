@@ -1,23 +1,30 @@
 package vn.csdl.trackerapp.web.rest;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 import vn.csdl.trackerapp.domain.Meet;
 import vn.csdl.trackerapp.domain.Person;
 import vn.csdl.trackerapp.repository.PersonRepository;
+import vn.csdl.trackerapp.service.PersonService;
+import vn.csdl.trackerapp.service.dto.PersonDTO;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
 public class PersonResource {
 
     PersonRepository repository;
+    PersonService service;
 
-    public PersonResource(PersonRepository repository) {
+    public PersonResource(PersonRepository repository, PersonService service) {
         this.repository = repository;
+        this.service = service;
     }
+
 
     @PostMapping("/person")
     public void createOrUpdatePerson(
@@ -30,8 +37,12 @@ public class PersonResource {
     public void createOrUpdatePerson(
         @PathVariable(value = "id") Long id,
         @RequestParam(value = "meetPersonId") Long meetPersonId,
-        @RequestParam(value = "startTime") LocalDateTime startTime,
-        @RequestParam(value = "endTime") LocalDateTime endTime
+        @RequestParam(value = "startTime")
+        @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+        LocalDateTime startTime,
+        @RequestParam(value = "endTime")
+        @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+        LocalDateTime endTime
     ) throws Exception {
         Assert.isTrue(!id.equals(meetPersonId), "meetPersonId must be different with id");
 
@@ -45,13 +56,12 @@ public class PersonResource {
     }
 
     @GetMapping("/person/{id}/track")
-    public List<Person> trackMeet(
+    public Map<String, List<PersonDTO>> trackMeet(
         @PathVariable(value = "id") Long id,
-        @RequestParam(value = "depth", required = false) Integer depth
+        @RequestParam(value = "fromTime")
+        @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+        LocalDateTime fromTime
     ) {
-        if (depth == null)
-            depth = 3;
-
-        return repository.findPeopleByRootNodeAndDepth(id, depth);
+        return service.track(id, fromTime);
     }
 }

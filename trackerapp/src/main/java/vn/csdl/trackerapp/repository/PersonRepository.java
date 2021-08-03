@@ -6,11 +6,21 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import vn.csdl.trackerapp.domain.Person;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
 public interface PersonRepository extends Neo4jRepository<Person, Long> {
 
-    @Query(value = "MATCH data=(a:Person)-[r:MEET*1..3]-(b:Person) WHERE a.id=$id RETURN data")
-    List<Person> findPeopleByRootNodeAndDepth(@Param(value = "id") Long id, @Param(value = "depth") Integer depth);
+    @Query(value = "MATCH data=(f0:Person)-[r:MEET*$depth]-(fn:Person) WHERE f0.id = $id AND all(rn IN r WHERE rn.startTime >= $fromTime) RETURN fn")
+    List<Person> findF1PeopleByRootNode(@Param(value = "id") Long id, @Param(value = "fromTime") LocalDateTime fromTime, @Param(value = "fromTime") int depth);
+
+    @Query(value = "match data=(f0:Person)-[r:MEET*2]-(fn:Person) WHERE f0.id = $id AND all(rn IN r WHERE rn.startTime >= $fromTime) RETURN fn")
+    List<Person> findF2PeopleByRootNode(@Param(value = "id") Long id, @Param(value = "fromTime") LocalDateTime fromTime);
+
+    @Query(value = "match data=(f0:Person)-[r:MEET*3]-(fn:Person) WHERE f0.id = $id AND all(rn IN r WHERE rn.startTime >= $fromTime) RETURN fn")
+    List<Person> findF3PeopleByRootNode(@Param(value = "id") Long id, @Param(value = "fromTime") LocalDateTime fromTime);
+
+    @Query(value = "match data=(f0:Person)-[r:MEET*4]-(fn:Person) WHERE f0.id = $id AND all(rn IN r WHERE rn.startTime >= $fromTime) RETURN fn")
+    List<Person> findF4PeopleByRootNode(@Param(value = "id") Long id, @Param(value = "fromTime") LocalDateTime fromTime);
 }

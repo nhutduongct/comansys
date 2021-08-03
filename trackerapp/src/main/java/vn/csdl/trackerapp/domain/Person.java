@@ -1,5 +1,6 @@
 package vn.csdl.trackerapp.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,5 +24,6 @@ public class Person {
     String name;
 
     @Relationship(type = "MEET", direction = INCOMING)
+    @JsonIgnoreProperties(value = "person")
     private List<Meet> meets = new ArrayList<>();
 }
