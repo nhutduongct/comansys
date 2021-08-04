@@ -8,6 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -55,9 +56,9 @@ public class Person {
 
     @JsonIgnoreProperties(value = "person")
     @OneToMany(mappedBy = "person", fetch = FetchType.EAGER)
-    List<Infection> infections;
+    Set<Infection> infections;
 
     @JsonIgnoreProperties(value = "person")
     @OneToMany(mappedBy = "person", fetch = FetchType.EAGER)
-    List<Quarantine> quarantines;
+    Set<Quarantine> quarantines;
 }

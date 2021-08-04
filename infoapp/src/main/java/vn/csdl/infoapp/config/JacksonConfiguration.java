@@ -22,7 +22,7 @@ public class JacksonConfiguration {
     @Bean
     public JavaTimeModule javaTimeModule() {
         JavaTimeModule javaTimeModule = new JavaTimeModule();
-        LocalDateTimeDeserializer localDateTimeDeserializer =  new LocalDateTimeDeserializer(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+        LocalDateTimeDeserializer localDateTimeDeserializer =  new LocalDateTimeDeserializer(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
         javaTimeModule.addDeserializer(LocalDateTime.class, localDateTimeDeserializer);
         return javaTimeModule;
     }

@@ -1,11 +1,8 @@
 package vn.csdl.infoapp.service.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.List;
 
 
 @Getter
@@ -28,9 +25,4 @@ public class PersonDTO {
 
     WardDTO ward;
 
-    @JsonIgnoreProperties(value = "person")
-    List<InfectionDTO> infections;
-
-    @JsonIgnoreProperties(value = "person")
-    List<QuarantineDTO> quarantines;
 }

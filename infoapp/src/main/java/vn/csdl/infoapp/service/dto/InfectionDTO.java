@@ -19,6 +19,7 @@ import java.time.LocalDateTime;
 public class InfectionDTO {
     Long id;
 
+    @JsonIgnoreProperties(value = "infections")
     PersonDTO person;
 
     Short fLevel;
@@ -29,5 +30,6 @@ public class InfectionDTO {
 
     String treatmentResult;
 
+    @JsonIgnoreProperties(value = "infections")
     PersonDTO infectedFromPerson;
 }

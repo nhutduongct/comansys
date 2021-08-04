@@ -10,5 +10,6 @@ public interface QuarantineMapper {
     QuarantineMapper INSTANCE = Mappers.getMapper(QuarantineMapper.class);
 
     Quarantine dtoToEntity(QuarantineDTO dto);
+
     QuarantineDTO entityToDTO(Quarantine entity);
 }
