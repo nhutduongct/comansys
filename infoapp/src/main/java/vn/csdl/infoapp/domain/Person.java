@@ -54,10 +54,10 @@ public class Person {
     Ward ward;
 
     @JsonIgnoreProperties(value = "person")
-    @OneToMany(mappedBy = "person")
+    @OneToMany(mappedBy = "person", fetch = FetchType.EAGER)
     List<Infection> infections;
 
     @JsonIgnoreProperties(value = "person")
-    @OneToMany(mappedBy = "person")
+    @OneToMany(mappedBy = "person", fetch = FetchType.EAGER)
     List<Quarantine> quarantines;
 }

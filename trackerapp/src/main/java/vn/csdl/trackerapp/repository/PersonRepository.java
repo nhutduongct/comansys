@@ -12,8 +12,8 @@ import java.util.List;
 @Repository
 public interface PersonRepository extends Neo4jRepository<Person, Long> {
 
-    @Query(value = "MATCH data=(f0:Person)-[r:MEET*$depth]-(fn:Person) WHERE f0.id = $id AND all(rn IN r WHERE rn.startTime >= $fromTime) RETURN fn")
-    List<Person> findF1PeopleByRootNode(@Param(value = "id") Long id, @Param(value = "fromTime") LocalDateTime fromTime, @Param(value = "fromTime") int depth);
+    @Query(value = "MATCH data=(f0:Person)-[r:MEET*1]-(fn:Person) WHERE f0.id = $id AND all(rn IN r WHERE rn.startTime >= $fromTime) RETURN fn")
+    List<Person> findF1PeopleByRootNode(@Param(value = "id") Long id, @Param(value = "fromTime") LocalDateTime fromTime);
 
     @Query(value = "match data=(f0:Person)-[r:MEET*2]-(fn:Person) WHERE f0.id = $id AND all(rn IN r WHERE rn.startTime >= $fromTime) RETURN fn")
     List<Person> findF2PeopleByRootNode(@Param(value = "id") Long id, @Param(value = "fromTime") LocalDateTime fromTime);

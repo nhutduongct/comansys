@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 public class Meet {
     @Id
     @GeneratedValue
-    private Long id;
+    Long id;
 
     LocalDateTime startTime;
 

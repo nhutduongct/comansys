@@ -38,7 +38,7 @@ public class PersonService {
 
         List<PersonDTO> f1DTOList = infoappFeignClient
             .getAllPersonByIdList(
-                repository.findF1PeopleByRootNode(idOfF0, fromTime, 1)
+                repository.findF1PeopleByRootNode(idOfF0, fromTime)
                 .stream()
                 .map(Person::getId)
                 .collect(Collectors.toList())

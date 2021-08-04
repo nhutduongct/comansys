@@ -13,8 +13,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class QuarantineDTO {
     Long id;
-    Person person;
-    QuarantinePlace quarantinePlace;
+    PersonDTO person;
+    QuarantineDTO quarantinePlace;
     LocalDateTime startDate;
     LocalDateTime endDate;
     Short quarantineResult;
