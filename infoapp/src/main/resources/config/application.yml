@@ -161,11 +161,11 @@ spring:
       client:
         provider:
           oidc:
-            issuer-uri: http://10.82.14.68:9080/auth/realms/comansys
+            issuer-uri: http://localhost:9080/auth/realms/comansys
         registration:
           oidc:
             client-id: internal
-            client-secret: dc7b8b55-0cff-4244-8e12-3e94bf4da334
+            client-secret: dbf1a311-5220-4b9e-98c6-5943eb54ac45
             scope: openid,profile,email
 
 server:

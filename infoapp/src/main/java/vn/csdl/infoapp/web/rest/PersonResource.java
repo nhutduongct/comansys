@@ -15,6 +15,7 @@ import vn.csdl.infoapp.repository.PersonRepository;
 import vn.csdl.infoapp.service.PersonService;
 import vn.csdl.infoapp.service.dto.PersonDTO;
 import vn.csdl.infoapp.service.mapper.PersonMapper;
+import vn.csdl.infoapp.web.rest.vm.PersonVM;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -54,11 +55,11 @@ public class PersonResource {
 
     @ApiOperation(value = "Lấy thông tin của một đối tượng")
     @GetMapping("/person/{id}")
-    public ResponseEntity<PersonDTO> getPerson(
+    public ResponseEntity<PersonVM> getPerson(
         @ApiParam(value = "Mã ", required = true)
         @PathVariable Long id
     ) {
-        return ResponseUtil.wrapOrNotFound(repository.findById(id).map(mapper::entityToDTO));
+        return ResponseUtil.wrapOrNotFound(repository.findById(id).map(mapper::entityToVM));
     }
 
     @ApiOperation(value = "Thêm một đối tượng mới")

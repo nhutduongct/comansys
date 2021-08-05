@@ -88,6 +88,7 @@ public class SecurityConfiguration {
         .and()
             .authorizeExchange()
             .pathMatchers("/").permitAll()
+            .pathMatchers("/services/*/v2/api-docs").permitAll()
             .pathMatchers("/*.*").permitAll()
             .pathMatchers("/api/authenticate").permitAll()
             .pathMatchers("/api/auth-info").permitAll()
